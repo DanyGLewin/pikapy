@@ -1,0 +1,19 @@
+pi pika <PIKACHU> - add top and 2nd top values in PIKACHU, push to PIKACHU
+pika pi <PIKACHU> - subtract top from 2nd top in PIKACHU, push to PIKACHU
+
+pi pikachu <PIKACHU> - multiply top by 2nd top in PIKACHU, push to PIKACHU
+pikachu <PIKACHU> - divide 2nd top by top in PIKACHU, push to PIKACHU
+
+pika pikachu <PIKACHU> - pop and print PIKACHU
+pikachu pikachu <PIKACHU> - pop PIKACHU and print as ASCII
+PIKACHU - pop PIKACHU
+[n terms] <PIKACHU> - push n to PIKACHU
+
+pi pika - push top of 'pi pikachu' to 'pika pikachu'
+pika pi - push top of 'pika pikachu' to 'pi pikachu'
+
+pikachu pikachu - if top of both pikachu are equal, GOTO line number n,
+				  where n is the number of terms in the next line
+
+pika pik - if top of both pikachu are not equal, GOTO line number n,
+		   where n is the number of terms in the next line
