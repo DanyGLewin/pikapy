@@ -4,6 +4,7 @@ Methods:
 syntax_error -- print information about syntax errors in the pikachu program
 """
 
+
 def syntax_error(lineNo):
     """Display information about syntax errors in the pikachu program then exit.
 

@@ -3,6 +3,8 @@
 Classes:
 PikaStack -- The basic data structure of the pikachu language.
 """
+
+
 class PikaStack():
     """Encapsulate Stack specific data and methods defined in the pikachu langeuage.
 
@@ -36,8 +38,8 @@ class PikaStack():
         if self.__check_binary_op():
             a = self.POP()
             b = self.POP()
-            self.PUSH(a+b)
-    
+            self.PUSH(a + b)
+
     def SUB(self):
         """Subtracts the top two elements.
         
@@ -52,8 +54,8 @@ class PikaStack():
         if self.__check_binary_op():
             a = self.POP()
             b = self.POP()
-            self.PUSH(b-a)
-    
+            self.PUSH(b - a)
+
     def MULT(self):
         """Multiplies the top two elements on the stack.
 
@@ -68,7 +70,7 @@ class PikaStack():
         if self.__check_binary_op():
             a = self.POP()
             b = self.POP()
-            self.PUSH(a*b)
+            self.PUSH(a * b)
 
     def DIV(self):
         """Divides the top two elements on the stack
@@ -89,7 +91,7 @@ class PikaStack():
             if a == 0:
                 self.PUSH(float('NaN'))
             else:
-                self.PUSH(b//a)
+                self.PUSH(b // a)
 
     def POP(self):
         """Pops and returns the top element from the stack.
@@ -126,7 +128,6 @@ class PikaStack():
         """
         return len(self.elements) == 0
 
-
     def __check_binary_op(self):
         """Returns True if it is safe to perform a binary op, False otherwise.
 
@@ -136,14 +137,14 @@ class PikaStack():
 
         Returns True if there are at least 2 elements on the stack.
         Returns False if there is 0 or 1 elements on the stack.
-        """ 
+        """
         if not len(self.elements):
             return False
         if len(self.elements) == 1:
             self.elements[0] = float('NaN')
             return False
         return True
-    
+
     def __str__(self):
         """Defines the string representation of the PikaStack object."""
         return str(self.elements)

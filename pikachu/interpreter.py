@@ -4,10 +4,12 @@ Methods:
 run -- The main context for the pikachu vm.
 """
 
+from __future__ import print_function
 import sys
 from pikachu.utils import syntax_error
 from pikachu.reader import PikaReader
 from pikachu.stack import PikaStack
+
 
 def run(fileName, args):
     """Run a specified Pikachu file in a virtual environment.
@@ -23,7 +25,7 @@ def run(fileName, args):
     stackDict = {
         "pi pikachu": piStack,
         "pika pikachu": pikaStack
-        }
+    }
 
     for a in args:
         piStack.PUSH(a)
@@ -91,15 +93,15 @@ def run(fileName, args):
                 tStack.MULT()
             elif command == "pika pikachu":
                 if not tStack.EMPTY():
-                    print(tStack.POP(),end="")
+                    print(tStack.POP(), end="")
                 else:
-                    print("undefined",end="")
+                    print("undefined", end="")
             elif command == "pikachu pikachu":
                 n = tStack.POP()
                 if n != None and type(n) == int:
-                    print(chr(n),end="")
+                    print(chr(n), end="")
                 else:
-                    print("undefined",end="")
+                    print("undefined", end="")
             else:
                 tStack.PUSH(2)
         else:
@@ -107,7 +109,8 @@ def run(fileName, args):
                 tStack = stackDict[" ".join(terms[-2:])]
             except KeyError:
                 syntax_error(reader.lineNo)
-            tStack.PUSH(len(terms)-2)
+            tStack.PUSH(len(terms) - 2)
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -117,6 +120,6 @@ if __name__ == "__main__":
     try:
         args = [int(x) for x in sys.argv[2:]]
     except ValueError:
-        print("invalid argument list: ",sys.argv[2:])
+        print("invalid argument list: ", sys.argv[2:])
         exit()
     run(fileName, args)

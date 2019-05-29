@@ -5,6 +5,7 @@ PikaReader -- The basic pikachu assembler
 """
 from pikachu.utils import syntax_error
 
+
 class PikaReader():
     """Provide a basic pikachu assembler and command parser.
     
@@ -12,6 +13,7 @@ class PikaReader():
     PikaReader(fileName) -> PikaReader
     goto(lineNo) -> void
     """
+
     def __init__(self, fileName):
         """Construct a PikaReader Object.
 
@@ -24,12 +26,11 @@ class PikaReader():
             print("No file named: {}".format(fileName))
             exit()
         l = fi.readlines()
-        self.lines = {x:l[x].strip() for x in range(len(l))}
+        self.lines = {x: l[x].strip() for x in range(len(l))}
         self.lineNo = -1
         fi.close()
 
-
-    def __next__(self):
+    def next(self):
         """Provide support for the next() function.
 
         next(this) is used to iterate through the pikachu code a line at a time.
@@ -44,8 +45,8 @@ class PikaReader():
         line = line.split("//")[0]
         if not line:
             return self.__next__()
-        
-        #check for invalid repetition of pi, pika, pikachu
+
+        # check for invalid repetition of pi, pika, pikachu
         target = None
         reps = 0
         for term in line.split():
