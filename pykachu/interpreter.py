@@ -6,9 +6,9 @@ run -- The main context for the pikachu vm.
 
 from __future__ import print_function
 import sys
-from pikachu.utils import syntax_error
-from pikachu.reader import PikaReader
-from pikachu.stack import PikaStack
+from pykachu.utils import syntax_error
+from pykachu.reader import PikaReader
+from pykachu.stack import PikaStack
 
 
 def run(fileName, args):

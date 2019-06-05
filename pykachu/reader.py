@@ -3,7 +3,7 @@
 Classes:
 PikaReader -- The basic pikachu assembler
 """
-from pikachu.utils import syntax_error
+from pykachu.utils import syntax_error
 
 
 class PikaReader():

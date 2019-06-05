@@ -1,3 +1,3 @@
 @echo off
 
-python -m pikachu %* %time:~6,2%
+python -m pykachu %* %time:~6,2%

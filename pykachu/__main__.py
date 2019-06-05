@@ -6,7 +6,7 @@ $ python -m pikachu filename [args]
 
 """
 import sys
-from pikachu.interpreter import run
+from pykachu.interpreter import run
 
 if len(sys.argv) < 2:
     print("No Pika file specified")
