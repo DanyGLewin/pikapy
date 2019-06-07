@@ -36,6 +36,7 @@ def run(fileName, args):
             command = next(reader)
         except StopIteration:
             break
+        command = command.split(' chu')[0]
         terms = command.split()
         if len(terms) < 2:
             syntax_error(reader.lineNo)
