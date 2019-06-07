@@ -44,7 +44,7 @@ class PikaReader():
         line = self.lines[self.lineNo]
         line = line.split("//")[0]
         if not line:
-            return self.__next__()
+            return self.next()
 
         # check for invalid repetition of pi, pika, pikachu
         target = None

@@ -38,7 +38,9 @@ def run(fileName, args):
             break
         command = command.split(' chu')[0]
         terms = command.split()
-        if len(terms) < 2:
+        if len(terms) == 0:
+            continue
+        if len(terms) == 1:
             syntax_error(reader.lineNo)
         elif len(terms) < 3:
             command = " ".join(terms)
