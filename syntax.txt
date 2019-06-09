@@ -15,5 +15,5 @@ pika pi - push top of 'pika pikachu' to 'pi pikachu'
 pikachu pikachu - if top of both pikachu are equal, GOTO line number n,
 				  where n is the number of terms in the next line
 
-pika pik - if top of both pikachu are not equal, GOTO line number n,
+pika pika - if top of both pikachu are not equal, GOTO line number n,
 		   where n is the number of terms in the next line

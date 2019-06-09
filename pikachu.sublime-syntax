@@ -1,0 +1,27 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+file_extensions:
+  - pika
+scope: source.pikachu
+fileTypes: [pika]
+uuid: 786ded00-92e4-4105-a21a-fd030af63c5a
+
+patterns:
+- name: copy
+  match: '(?<=(\n|^))((pika pi)|(pi pika))(?=(\n|$))'
+
+- name: compare
+  match: '(?<=(\n|^))((pika pika)|(pikachu pikachu))(?=(\n|$))'
+
+- name: arithmetic
+  match: '(?<=(\n|^))((pika pi)|(pi pika)|(pi pikachu)|(pikachu))(?=( pika pikachu)|( pi pikachu)(\n|$))'
+
+- name: print
+  match: '(?<=(\n|^))((pikachu pikachu)|(pika pikachu))(?=( pika pikachu)|( pi pikachu)(\n|$))'
+
+- name: pop
+  match: '(?<=(\n|^))((pika pikachu)|(pi pikachu))(?=\n|$)'
+
+- name: stack
+  match: '(?<=(\n|^)[(pi )|(pika )|(pikachu)]+)((pika pikachu)|(pi pikachu)(\n|$))'
