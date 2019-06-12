@@ -4,15 +4,15 @@ Methods:
 run -- The main context for the pikachu vm.
 """
 
-from __future__ import print_function
 import sys
-from pykachu.utils import syntax_error
+from pykachu.utils import pika_error, pika_print
 from pykachu.reader import PikaReader
 from pykachu.stack import PikaStack
 
 
 def run(fileName, args):
-    """Run a specified Pikachu file in a virtual environment.
+    """
+    Run a specified Pikachu file in a virtual environment.
 
     Arguments:
     fileName -- the name and path of a file containing a pikachu program.
@@ -41,7 +41,7 @@ def run(fileName, args):
         if len(terms) == 0:
             continue
         if len(terms) == 1:
-            syntax_error(reader.lineNo)
+            pika_error(reader.lineNo, 'unknown command "{}"'.format(terms[0]))
         elif len(terms) < 3:
             command = " ".join(terms)
             if command == "pi pikachu":
@@ -58,7 +58,7 @@ def run(fileName, args):
                 try:
                     lineNo = len(next(reader).split())
                 except StopIteration:
-                    syntax_error(reader.lineNo - 1)
+                    pika_error(reader.lineNo - 1, "unexpected EoF, expected new line")
                 if piStack.PEEK() != pikaStack.PEEK():
                     continue
                 reader.goto(lineNo)
@@ -66,17 +66,17 @@ def run(fileName, args):
                 try:
                     lineNo = len(next(reader).split())
                 except StopIteration:
-                    syntax_error(reader.lineNo - 1)
+                    pika_error(reader.lineNo - 1, "unexpected EoF, expected new line")
                 if piStack.PEEK() == pikaStack.PEEK():
                     continue
                 reader.goto(lineNo)
             else:
-                syntax_error(reader.lineNo)
+                pika_error(reader.lineNo, 'unknown command "{}"'.format(reader.lines[reader.lineNo]))
         elif len(terms) < 4:
             try:
                 tStack = stackDict[" ".join(terms[-2:])]
             except KeyError:
-                syntax_error(reader.lineNo)
+                pika_error(reader.lineNo, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
             command = terms[0]
             if command == "pikachu":
                 tStack.DIV()
@@ -86,7 +86,7 @@ def run(fileName, args):
             try:
                 tStack = stackDict[" ".join(terms[-2:])]
             except KeyError:
-                syntax_error(reader.lineNo)
+                pika_error(reader.lineNo, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
             command = " ".join(terms[:-2])
             if command == "pi pika":
                 tStack.ADD()
@@ -96,33 +96,33 @@ def run(fileName, args):
                 tStack.MULT()
             elif command == "pika pikachu":
                 if not tStack.EMPTY():
-                    print(tStack.POP(), end="")
+                    pika_print(tStack.POP())
                 else:
-                    print("undefined", end="")
+                    pika_print("undefined")
             elif command == "pikachu pikachu":
                 n = tStack.POP()
                 if n != None and type(n) == int:
-                    print(chr(n), end="")
+                    pika_print(chr(n))
                 else:
-                    print("undefined", end="")
+                    pika_print("undefined")
             else:
                 tStack.PUSH(2)
         else:
             try:
                 tStack = stackDict[" ".join(terms[-2:])]
             except KeyError:
-                syntax_error(reader.lineNo)
+                pika_error(reader.lineNo, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
             tStack.PUSH(len(terms) - 2)
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("No Pika file specified")
+        pika_print("No Pika file specified")
         exit()
     fileName = sys.argv[1]
     try:
         args = [int(x) for x in sys.argv[2:]]
     except ValueError:
-        print("invalid argument list: ", sys.argv[2:])
+        pika_print("invalid argument list: ", sys.argv[2:])
         exit()
     run(fileName, args)

@@ -1,13 +1,15 @@
-"""Provide a basic assembler for the pikachu language.
+"""
+Provide a basic assembler for the pikachu language.
 
 Classes:
 PikaReader -- The basic pikachu assembler
 """
-from pykachu.utils import syntax_error
+from pykachu.utils import pika_error, pika_print
 
 
 class PikaReader():
-    """Provide a basic pikachu assembler and command parser.
+    """
+    Provide a basic pikachu assembler and command parser.
     
     Methods:
     PikaReader(fileName) -> PikaReader
@@ -15,7 +17,8 @@ class PikaReader():
     """
 
     def __init__(self, fileName):
-        """Construct a PikaReader Object.
+        """
+        Construct a PikaReader Object.
 
         Arguments:
         fileName -> the path to a pika file.
@@ -23,15 +26,22 @@ class PikaReader():
         try:
             fi = open(fileName)
         except FileNotFoundError:
-            print("No file named: {}".format(fileName))
+            pika_print("No file named: {}".format(fileName))
             exit()
         l = fi.readlines()
-        self.lines = {x+1: l[x].strip() for x in range(len(l))}
+        self.lines = {x+1: l[x].strip().split(' chu ')[0] for x in range(len(l))}
+        for lineNo in self.lines:
+            for word in self.lines[lineNo].split():
+                if word not in ('pi', 'pika', 'pikachu'):
+                    raise pika_error(lineNo, 'unknown word "{}"'.format(word))
+        if self.lines[len(self.lines)][-1] != '\n':
+            self.lines[len(self.lines)+1] = 'pika pika pi pikachu' #arbitrary command that won't change the output
         self.lineNo = 0 
         fi.close()
 
     def next(self):
-        """Provide support for the next() function.
+        """
+        Provide support for the next() function.
 
         next(this) is used to iterate through the pikachu code a line at a time.
         
@@ -39,10 +49,9 @@ class PikaReader():
         StopIteration -- when the end of the file has been reached.
         """
         self.lineNo += 1
-        if self.lineNo >= len(self.lines):
+        if self.lineNo > len(self.lines):
             raise StopIteration
         line = self.lines[self.lineNo]
-        line = line.split("//")[0]
         if not line:
             return self.next()
 
@@ -53,7 +62,7 @@ class PikaReader():
             if term == target:
                 reps += 1
                 if reps >= 3:
-                    syntax_error(self.lineNo)
+                    pika_error(self.lineNo, 'too many repetitions')
             else:
                 target = term
                 reps = 1
@@ -61,7 +70,8 @@ class PikaReader():
         return line
 
     def goto(self, lineNo):
-        """Directs the reader to a specific line of code.
+        """
+        Directs the reader to a specific line of code.
 
         Arguments:
         lineNo -- the line of code (1 based) to set the reader to.
