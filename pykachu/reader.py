@@ -27,7 +27,7 @@ class PikaReader():
             exit()
         l = fi.readlines()
         self.lines = {x+1: l[x].strip() for x in range(len(l))}
-        self.lineNo = 0 
+	self.lineNo = 0 
         fi.close()
 
     def next(self):
