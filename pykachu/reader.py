@@ -26,8 +26,8 @@ class PikaReader():
             print("No file named: {}".format(fileName))
             exit()
         l = fi.readlines()
-        self.lines = {x: l[x].strip() for x in range(len(l))}
-        self.lineNo = -1
+        self.lines = {x+1: l[x].strip() for x in range(len(l))}
+        self.lineNo = 0 
         fi.close()
 
     def next(self):
@@ -70,6 +70,6 @@ class PikaReader():
         If lineNo is greater than the number of lines in the code. The reader 
         will be set at the end of the code.
         """
-        if lineNo >= len(self.lines):
+        if lineNo > len(self.lines):
             lineNo = len(self.lines)
-        self.lineNo = lineNo - 2
+        self.lineNo = lineNo - 1
