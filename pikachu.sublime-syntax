@@ -7,21 +7,36 @@ scope: source.pikachu
 fileTypes: [pika]
 uuid: 786ded01-92e4-4105-a21a-fd030af63c5a
 
-patterns:
-- name: copy
-  match: '(?<=^)((pika pi)|(pi pika))(?=(\n|$))'
+contexts:
+  main:
+    - name: copy
+      match: (?<=^)((pika pi)|(pi pika))(?=(\n|$|( chu.*)))
+      scope: pikachu.Copy
 
-- name: compare
-  match: '(?<=^)((pika pika)|(pikachu pikachu))(?=(\n|$))'
+    - name: compare
+      match: (?<=^)((pika pika)|(pikachu pikachu))(?=(\n|$|( chu.*)))
+      scope: pikachu.Compare
 
-- name: arithmetic
-  match: '(?<=^)((pika pi)|(pi pika)|(pi pikachu)|(pikachu))(?= pika pikachu| pi pikachu(\n|$))'
+    - name: arithmetic
+      match: (?<=^)((pika pi)|(pi pika)|(pi pikachu)|(pikachu))(?= pika pikachu| pi pikachu(\n|$|( chu.*)))
+      scope: pikachu.Math
 
-- name: print
-  match: '(?<=^)((pikachu pikachu)|(pika pikachu))(?= pika pikachu| pi pikachu(\n|$))'
+    - name: print
+      match: (?<=^)((pikachu pikachu)|(pika pikachu))(?= pika pikachu| pi pikachu(\n|$|( chu.*)))
+      scope: pikachu.Print
 
-- name: pop
-  match: '(?<=^)((pika pikachu)|(pi pikachu))(?=\n|$)'
+    - name: pop
+      match: (?<=^)((pika pikachu)|(pi pikachu))(?=\n|$|( chu.*))
+      scope: pikachu.Pop
 
-- name: stack
-  match: '(?<=\V\b)((pika pikachu)|(pi pikachu))(?=\n|$)'
+    - name: stack
+      match: (?<=\b)((pika pikachu)|(pi pikachu))(?=\n|$|( chu.*))
+      scope: pikachu.Stack
+
+    - name: comment start
+      match: (?<=\b)(chu)(?=.*\n|$)
+      scope: storage.type
+
+    - name: comment
+      match: (?<=\bchu )(.*)(?=\n|$)
+      scope: comment
