@@ -9,6 +9,8 @@ pikachu pikachu <PIKACHU> - pop PIKACHU and print as ASCII
 PIKACHU - pop PIKACHU
 [n terms] <PIKACHU> - push n to PIKACHU
 
+pi pi - push to 'pika pikachu' a random number between 1 and its top value (inclusive)
+
 pi pika - push top of 'pi pikachu' to 'pika pikachu'
 pika pi - push top of 'pika pikachu' to 'pi pikachu'
 

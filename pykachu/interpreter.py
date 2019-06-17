@@ -19,64 +19,68 @@ def run(fileName, args):
     args -- the command line arguments specified when the pikachu interpreter was
     run.
     """
-    piStack = PikaStack()
-    pikaStack = PikaStack()
+    pi_stack = PikaStack()
+    pika_stack = PikaStack()
 
     stackDict = {
-        "pi pikachu": piStack,
-        "pika pikachu": pikaStack
+        "pi pikachu": pi_stack,
+        "pika pikachu": pika_stack
     }
 
     for a in args:
-        piStack.PUSH(a)
+        pi_stack.PUSH(a)
 
     reader = PikaReader(fileName)
     while True:
         try:
             command = next(reader)
         except StopIteration:
+            print ''
             break
         command = command.split(' chu')[0]
         terms = command.split()
         if len(terms) == 0:
             continue
         if len(terms) == 1:
-            pika_error(reader.lineNo, 'unknown command "{}"'.format(terms[0]))
+            pika_error(reader.line_num, 'unknown command "{}"'.format(terms[0]))
         elif len(terms) < 3:
             command = " ".join(terms)
             if command == "pi pikachu":
-                piStack.POP()
+                pi_stack.POP()
             elif command == "pika pikachu":
-                pikaStack.POP()
+                pika_stack.POP()
             elif command == "pi pika":
-                if not piStack.EMPTY():
-                    pikaStack.PUSH(piStack.PEEK())
+                if not pi_stack.EMPTY():
+                    pika_stack.PUSH(pi_stack.PEEK())
             elif command == "pika pi":
-                if not pikaStack.EMPTY():
-                    piStack.PUSH(pikaStack.PEEK())
+                if not pika_stack.EMPTY():
+                    pi_stack.PUSH(pika_stack.PEEK())
+            elif command == "pi pi":
+                if not pika_stack.EMPTY():
+                    pika_stack.RAND()
             elif command == "pikachu pikachu":
                 try:
-                    lineNo = len(next(reader).split())
+                    line_num = len(next(reader).split())
                 except StopIteration:
-                    pika_error(reader.lineNo - 1, "unexpected EoF, expected new line")
-                if piStack.PEEK() != pikaStack.PEEK():
+                    pika_error(reader.line_num - 1, "unexpected EoF, expected new line")
+                if pi_stack.PEEK() != pika_stack.PEEK():
                     continue
-                reader.goto(lineNo)
+                reader.goto(line_num)
             elif command == "pika pika":
                 try:
-                    lineNo = len(next(reader).split())
+                    line_num = len(next(reader).split())
                 except StopIteration:
-                    pika_error(reader.lineNo - 1, "unexpected EoF, expected new line")
-                if piStack.PEEK() == pikaStack.PEEK():
+                    pika_error(reader.line_num - 1, "unexpected EoF, expected new line")
+                if pi_stack.PEEK() == pika_stack.PEEK():
                     continue
-                reader.goto(lineNo)
+                reader.goto(line_num)
             else:
-                pika_error(reader.lineNo, 'unknown command "{}"'.format(reader.lines[reader.lineNo]))
+                pika_error(reader.line_num, 'unknown command "{}"'.format(reader.lines[reader.line_num]))
         elif len(terms) < 4:
             try:
                 tStack = stackDict[" ".join(terms[-2:])]
             except KeyError:
-                pika_error(reader.lineNo, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
+                pika_error(reader.line_num, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
             command = terms[0]
             if command == "pikachu":
                 tStack.DIV()
@@ -86,7 +90,7 @@ def run(fileName, args):
             try:
                 tStack = stackDict[" ".join(terms[-2:])]
             except KeyError:
-                pika_error(reader.lineNo, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
+                pika_error(reader.line_num, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
             command = " ".join(terms[:-2])
             if command == "pi pika":
                 tStack.ADD()
@@ -101,7 +105,7 @@ def run(fileName, args):
                     pika_print("undefined")
             elif command == "pikachu pikachu":
                 n = tStack.POP()
-                if n != None and type(n) == int:
+                if n and type(n) == int:
                     pika_print(chr(n))
                 else:
                     pika_print("undefined")
@@ -111,7 +115,7 @@ def run(fileName, args):
             try:
                 tStack = stackDict[" ".join(terms[-2:])]
             except KeyError:
-                pika_error(reader.lineNo, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
+                pika_error(reader.line_num, 'unknown pikachu "{}"'.format(" ".join(terms[-2:])))
             tStack.PUSH(len(terms) - 2)
 
 

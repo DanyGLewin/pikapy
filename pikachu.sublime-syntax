@@ -21,6 +21,10 @@ contexts:
       match: (?<=^)((pika pi)|(pi pika)|(pi pikachu)|(pikachu))(?= pika pikachu| pi pikachu(\n|$|( chu.*)))
       scope: pikachu.Math
 
+    - name: random
+      match: (?<=^)(pi pi)(?=\n|$|( chu.*))
+      scope: pikachu.Math
+
     - name: print
       match: (?<=^)((pikachu pikachu)|(pika pikachu))(?= pika pikachu| pi pikachu(\n|$|( chu.*)))
       scope: pikachu.Print
