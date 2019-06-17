@@ -106,7 +106,7 @@ class PikaStack():
         If top of the stack is negative, push 0 to the top of the stack.
         :return:
         """
-        if self.PEEK() and self.PEEK > 0:
+        if self.PEEK() and self.PEEK() > 0:
             self.PUSH(randrange(self.PEEK()) + 1)
         else:
             self.PUSH(0)
