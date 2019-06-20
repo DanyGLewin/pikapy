@@ -10,7 +10,7 @@ from pykachu.reader import PikaReader
 from pykachu.stack import PikaStack
 
 
-def run(fileName, args):
+def run(fileName, args, debug):
     """
     Run a specified Pikachu file in a virtual environment.
 
@@ -33,6 +33,12 @@ def run(fileName, args):
     reader = PikaReader(fileName)
     while True:
         try:
+            if debug:
+                try:
+                    print "\nline {}: {}\npi    {}\npika  {}".format(reader.line_num, reader.lines[reader.line_num],
+                                                                     pi_stack.elements, pika_stack.elements)
+                except KeyError:
+                    pass
             command = next(reader)
         except StopIteration:
             print ''

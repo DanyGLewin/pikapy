@@ -25,17 +25,19 @@ class PikaReader():
         """
         try:
             fi = open(fileName)
-        except FileNotFoundError:
+        except IOError:
             pika_print("No file named: {}".format(fileName))
             exit()
         lines = fi.readlines()
-        self.lines = {x+1: lines[x].strip().split(' chu ')[0] for x in range(len(lines))}
+        self.lines = {x+1: lines[x].strip().split(' chu')[0] for x in range(len(lines))}
         for line_num in self.lines:
+            if self.lines[line_num][:3] == 'chu':
+                self.lines[line_num] = ''
             for word in self.lines[line_num].split():
                 if word not in ('pi', 'pika', 'pikachu'):
                     raise pika_error(line_num, 'unknown word "{}"'.format(word))
-        if self.lines[len(self.lines)][-1] != '\n':
-            self.lines[len(self.lines)+1] = 'pika pika pi pikachu' #arbitrary command that won't change the output
+        if not self.lines[len(self.lines)] or self.lines[len(self.lines)][-1] != '\n':
+            self.lines[len(self.lines)+1] = '' #arbitrary command that won't change the output
         self.line_num = 0 
         fi.close()
 
@@ -66,7 +68,6 @@ class PikaReader():
             else:
                 target = term
                 reps = 1
-
         return line
 
     def goto(self, line_num):
@@ -78,8 +79,8 @@ class PikaReader():
         
         Error Handling:
         If line_num is greater than the number of lines in the code. The reader
-        will be set at the end of the code.
+        will be set to read the last line of the code.
         """
         if line_num > len(self.lines):
-            line_num = len(self.lines)
+            line_num = len(self.lines) - 2
         self.line_num = line_num - 1

@@ -1,16 +1,83 @@
+chu usage: pikachu roll.pika number size
+chu out: result of a (number)d(size) roll
 
-pi pikachu pi pikachu
-pi pi pika pi pikachu pi pikachu pika pikachu
+pi pika chu get die size to pika
+pi pika chu twice
+pi pikachu chu get rid of size on pi, so number of dice is on top
+
+pi pika chu get the number of dice to appear twice in pi: once for the counter, once to know how many rolls to sum
 pika pi
-pi pikachu pi pikachu
-pika pika pi pika pikachu pika pi pikachu pi pi pika pika pikachu
+pika pikachu
+
+pika pikachu chu first time, pop the second time that size appears, afterwards pop the 0
+pi pi chu first roll, because we can assume that no idiot will roll 0 dice
+
+pi pika pika pikachu chu get the die size to the top of pika
 pika pi
-pikachu pi pikachu
+pika pikachu
+pika pi
+pika pi pi pikachu
 pi pika
+pi pikachu
+pi pikachu
+pi pikachu
+
+pi pi pikachu chu subtract one from top of pi, clean up afterwards
+pika pi pi pikachu
+pi pika
+pi pikachu
 pi pikachu
 pi pikachu
 pika pi
 pika pikachu
+
+chu put 0 on top of pika pikachu, clean up afterwards
+pi pika pikachu
+pi pika pikachu
+pika pi pika pikachu
 pika pi
-pikachu pi pikachu
-pika pikachu pi pikachu
+pika pikachu
+pika pikachu
+pika pikachu
+pi pika
+pi pikachu
+
+pika pika chu if unequal, roll again
+pi pi pika pika pi pi pika pika pi pi pika pika chu goto 12
+
+pika pikachu chu remove the 0 from the top of pika
+pika pikachu chu remove the size from the top of pika
+pi pikachu chu remove the 0 from the top of pi
+
+pi pika pikachu chu if the top of pi is 1, go to 1 bebore the print
+pikachu pikachu
+pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi
+pika pikachu
+
+pi pi pikachu chu otherwise subtract one from top of pi, clean up afterwards
+pika pi pi pikachu
+pi pika
+pi pikachu
+pi pikachu
+pi pikachu
+pika pi
+pika pikachu
+
+pika pi chu then add the 1st and 3rd items in pika, and clean up
+pika pikachu
+pika pikachu
+pi pika
+pi pikachu
+pi pika pika pikachu
+pika pi
+pika pikachu
+pika pikachu
+pika pikachu
+pi pika
+
+pikachu pikachu chu goto 50
+pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi pika pi
+
+
+pika pikachu
+pika pikachu pika pikachu chu print

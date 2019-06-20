@@ -1,25 +1,27 @@
 #!/usr/bin/env python
 
-from sys import argv
-from click import secho
-from  pykachu import interpreter, utils
+import click
+from pykachu import interpreter, utils
 
-def main():
-	if len(argv) < 2:
-		utils.pika_print('No Pika file specified')
-		return
-	
-	
-	file = argv[1]
-	if len(argv) > 2:
-		try:
-			args = [int(arg) for arg in argv[2:]]
-		except ValueError:
-			utils.pika_print('Invalid input, please provide exclusively integers')
-	else:
-		args = []
-	interpreter.run(file, args)
+
+@click.command()
+@click.argument('filename')
+@click.argument('args_', nargs=-1)
+@click.option('-d', '-D', '--debug', is_flag=True)
+def main(filename=None, args_=[], debug=False):
+    if not filename:
+        utils.pika_print('No Pika file specified')
+        return
+    if len(args_) > 0:
+        try:
+            args_ = [int(arg) for arg in args_]
+        except ValueError:
+            utils.pika_print('Invalid input, please provide exclusively integers')
+    else:
+        args_ = []
+    interpreter.run(filename, args_, debug)
+
 
 if __name__ == '__main__':
-	main()
-	print ''
+    main()
+    print ''

@@ -42,7 +42,10 @@ class PikaStack():
         """
         a = self.POP()
         b = self.POP()
-        self.PUSH(a + b)
+        c = a + b
+        self.PUSH(b)
+        self.PUSH(a)
+        self.PUSH(c)
 
     def SUB(self):
         """
@@ -58,7 +61,10 @@ class PikaStack():
         """
         a = self.POP()
         b = self.POP()
-        self.PUSH(b - a)
+        c = b - a
+        self.PUSH(b)
+        self.PUSH(a)
+        self.PUSH(c)
 
     def MULT(self):
         """
@@ -74,7 +80,10 @@ class PikaStack():
         """
         a = self.POP()
         b = self.POP()
-        self.PUSH(a * b)
+        c = a * b
+        self.PUSH(b)
+        self.PUSH(a)
+        self.PUSH(c)
 
     def DIV(self):
         """
@@ -95,7 +104,10 @@ class PikaStack():
         if a == 0:
             self.PUSH(float('NaN'))
         else:
-            self.PUSH(b // a)
+            c = b // a
+            self.PUSH(b)
+            self.PUSH(a)
+            self.PUSH(c)
 
     def RAND(self):
         """
