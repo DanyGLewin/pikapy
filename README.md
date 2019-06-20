@@ -6,10 +6,7 @@ The definition of the esoteric programming language named 'pikachu' can be found
 
 ### Installation:
 
-1. run 
-```bash
-$ git clone https://github.com/DanyGLewin/Pykachu.git
-```
+1. run `$ git clone https://github.com/DanyGLewin/Pykachu.git`
 2. Go to your Sublime Packages folder, which defaults to `~/Library/Application Support/Sublime Text 3/Packages` on Mac OSX and ` ` on Windows, create a new folder called Pikachu, and copy pikachu.sublime-syntax to there.
 
 3. In the same Packages folder, find `Color Scheme - Default`, and copy `pikachu.sublime-color-scheme` there.
