@@ -111,7 +111,7 @@ class PikaStack():
 
     def RAND(self):
         """
-        Returns a random number between 1 and the top element on the stack (inclusive(.
+        Returns a random number between 1 and the top element on the stack (inclusive).
 
         Error Hnadling:
         If stack is empty, push 0 to the top of the stack.
