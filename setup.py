@@ -1,8 +1,8 @@
 from distutils.core import setup
 
 setup(
-    name='pykachu',  # How you named your package folder (MyLib)
-    packages=['pykachu'],  # Chose the same as "name"
+    name='pikachu',  # How you named your package folder (MyLib)
+    packages=['pikachu'],  # Chose the same as "name"
     version='0.3',  # Start with a small number and increase it with every change you make
     license='MIT',  # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     description='Pikachu interpreter written in Python',  # Give a short description about your library
