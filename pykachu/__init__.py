@@ -5,6 +5,7 @@ Pikachu is intended for running pikachu language files from the command line.
 
 
 Modules:
+pikachu - executable file, for running  click through the command line
 interpreter - validates syntax and executes commands
 reader - reads the pikachu files and does some syntax checking
 stack - provides the basic data structure for the pikachu language

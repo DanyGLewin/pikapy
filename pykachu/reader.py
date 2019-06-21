@@ -4,6 +4,7 @@ Provide a basic assembler for the pikachu language.
 Classes:
 PikaReader -- The basic pikachu assembler
 """
+
 from pykachu.utils import pika_error, pika_print
 
 
@@ -29,16 +30,16 @@ class PikaReader():
             pika_print("No file named: {}".format(fileName))
             exit()
         lines = fi.readlines()
-        self.lines = {x+1: lines[x].strip().split(' chu')[0] for x in range(len(lines))}
+        self.lines = {x + 1: lines[x].strip().split(' chu')[0] for x in range(len(lines))}
         for line_num in self.lines:
-            if self.lines[line_num][:3] == 'chu':
+            if self.lines[line_num][:3] == 'chu':  # allow for whole-line comments
                 self.lines[line_num] = ''
             for word in self.lines[line_num].split():
                 if word not in ('pi', 'pika', 'pikachu'):
                     raise pika_error(line_num, 'unknown word "{}"'.format(word))
         if not self.lines[len(self.lines)] or self.lines[len(self.lines)][-1] != '\n':
-            self.lines[len(self.lines)+1] = '' #arbitrary command that won't change the output
-        self.line_num = 0 
+            self.lines[len(self.lines) + 1] = ''  # arbitrary command that won't change the output
+        self.line_num = 0
         fi.close()
 
     def next(self):
@@ -51,10 +52,10 @@ class PikaReader():
         StopIteration -- when the end of the file has been reached.
         """
         self.line_num += 1
-        if self.line_num > len(self.lines):
+        if self.line_num > len(self.lines):  # EOF
             raise StopIteration
         line = self.lines[self.line_num]
-        if not line:
+        if not line:  # skip blank lines and comments
             return self.next()
 
         # check for invalid repetition of pi, pika, pikachu
@@ -75,9 +76,8 @@ class PikaReader():
         Directs the reader to a specific line of code.
 
         Arguments:
-        line_num -- the line of code (1 based) to set the reader to.
-        
-        Error Handling:
+        line_num -- the line of code to set the reader to.
+
         If line_num is greater than the number of lines in the code. The reader
         will be set to read the last line of the code.
         """
