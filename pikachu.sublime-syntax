@@ -26,7 +26,7 @@ contexts:
       scope: pikachu.Math
 
     - name: print
-      match: (?<=^)((pikachu pikachu)|(pika pikachu))(?= pika pikachu| pi pikachu(\n|$|( chu.*)))
+      match: (?<=^)((pika pikachu)|(pikachu pikachu))(?= pika pikachu| pi pikachu(\n|$|( chu.*)))
       scope: pikachu.Print
 
     - name: pop
@@ -38,8 +38,8 @@ contexts:
       scope: pikachu.Stack
 
     - name: comment start
-      match: (?<=\b)(chu)(?=.*\n|$)
-      scope: storage.type
+      match: (?<=\b)(chu)(?=.*\n|.*$)
+      scope: pikachu.Comment.Start
 
     - name: comment
       match: (?<=\bchu )(.*)(?=\n|$)

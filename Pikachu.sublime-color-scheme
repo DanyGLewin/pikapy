@@ -24,10 +24,12 @@
         "yellow5": "hsl(50, 11%, 41%)",
         "pikayellow": "#FAD61D",
         "pikaorange": "#E19720",
-        "pichuyellow": "#f6ee94",
+        "pichuyellow": "#F6EE94",
         "raichubrown": "#BD5A31",
-        "pichupink": "#E67B94",
-        "minunyellow": "#e6c573"
+        "minunyellow": "#E6C573",
+        "jigglypink": "#E67383",
+        "jigglyblue": "#10B4EE",
+        "other": "#FFFF00"
     },
     "globals":
     {
@@ -323,7 +325,7 @@
         {
             "name": "Pikachu Print",
             "scope": "pikachu.Print",
-            "foreground": "var(pichupink)"
+            "foreground": "var(jigglyblue)"
         },
         {
             "name": "Pikachu Stack",
@@ -333,7 +335,7 @@
         {
             "name": "Pikachu Compare",
             "scope": "pikachu.Compare",
-            "foreground": "var(pichuyellow)"
+            "foreground": "var(jigglypink)"
         },
         {
             "name": "Pikachu Pop",
@@ -341,9 +343,9 @@
             "foreground": "var(minunyellow)"
         },
         {
-            "name": "Pikachu Compare",
-            "scope": "pikachu.Compare",
-            "foreground": "var(pichuyellow)"
+            "name": "Pikachu Comment Start",
+            "scope": "pikachu.Comment.Start",
+            "foreground": "var(jigglyblue)"
         },
     ]
 }
