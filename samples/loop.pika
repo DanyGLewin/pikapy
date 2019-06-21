@@ -1,18 +1,17 @@
-pikachu pi pi pikachu               // push 2 pi pikachu
-pi pika pikachu pi pika pi pikachu  // push 5 pi pikachu
-pi pikachu pi pikachu               // Mult pi pikachu
-pi pika pikachu                     // push 1 pika pikachu
-pi pika pikachu                     // push 1 pika pikachu
-pika pi pika pikachu                // SUB pika pikachu
-pika pi                             // copies from pika pikachu to pi pikachu
-pika pikachu pika pikachu           // prints pika pikachu as a number
-pi pika                             // copies from pi pikachu to pika pikachu
-pi pikachu                          // pop from pi pikachu
-pi pika pikachu                     // push 1 to pika pikachu
-pi pika pika pikachu                // add pika pikachu
-pikachu pikachu                     // compare stacks if equal
-pika pikachu pika pika pi pi pikachu pika pikachu pi pika pika pi pikachu pikachu pi pika // goto line 17
-pika pika                           // compare stacks if not equal
-pikachu pi pika pika pi pikachu pi  // goto line 7
-pika pikachu                        // pop from pika pikachu
-
+pikachu pi pi pikachu chu get the number 10 to pi in a roundabout way
+pi pika pikachu pi pika pi pikachu
+pi pikachu pi pikachu
+pi pika pikachu chu get 0 to pika
+pi pika pikachu
+pika pi pika pikachu
+pika pi chu print the current count, and keep it only on pika
+pika pikachu pika pikachu
+pi pika
+pi pikachu
+pi pika pikachu chu increment pika by 1
+pi pika pika pikachu
+pikachu pikachu chu compare stacks if equal
+pika pikachu pika pika pi pi pikachu pika pikachu pi pika pika pi pikachu pikachu pi pika chu goto line 17
+pika pika chu compare stacks if not equal
+pikachu pi pika pika pi pikachu pi chu goto line 7
+pika pikachu chu pop from pika pikachu
