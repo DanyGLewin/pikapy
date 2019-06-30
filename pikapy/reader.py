@@ -5,7 +5,7 @@ Classes:
 PikaReader -- The basic pikachu assembler
 """
 
-from pykachu.utils import pika_error, pika_print
+from pikapy.utils import pika_error, pika_print
 
 
 class PikaReader():

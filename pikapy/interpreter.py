@@ -4,9 +4,9 @@ Methods:
 run -- The main context for the pikachu vm.
 """
 
-from pykachu.utils import pika_error, pika_print
-from pykachu.reader import PikaReader
-from pykachu.stack import PikaStack
+from pikapy.utils import pika_error, pika_print
+from pikapy.reader import PikaReader
+from pikapy.stack import PikaStack
 
 
 def run(file_name, args, debug):
